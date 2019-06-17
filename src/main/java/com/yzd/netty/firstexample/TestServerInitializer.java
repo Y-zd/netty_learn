@@ -12,7 +12,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
  * @version : V1.0
  *
  */
-public class TestServerlInitializer extends ChannelInitializer<SocketChannel> {
+public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
