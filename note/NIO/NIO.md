@@ -26,3 +26,7 @@
    1. 相对方法：limit值与position值会在操作时被考虑到
    2. 绝对方法：完全忽略掉limit与position值   
        
+*  DirectByteBuffer(buffer数组在堆外直接内存) 和 HeapByteBuffer(buffer数组在堆内)
+   1. DirectByteBuffer存放着指向堆外直接内存的的address
+   2. HeapByteBuffer与操作系统交互数据的时候需要把数据拷贝到堆外直接内存
+   3. DirectByteBuffer实现0拷贝
