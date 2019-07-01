@@ -13,5 +13,16 @@
    6. 与Stream不同的是Channel是双向的，Channel打开后可以进行读取，写入或者读写。
    7. 由于Channel是双向的，因此它能更好的反映出底层操作系统的真实情况。在Linux系统中，底层操作系统的通道是双向的。
 
-*  关于nio Buffer中3个重要状态属性的含义:position，limit和capacity 
-     0 <= mark <= position <= limit <= capacity
+*  关于nio Buffer中3个重要状态属性的含义:position，limit和capacity   [NioTest1](/src/main/java/com/yzd/nio/NioTest1.java)
+   1. 0 <= mark <= position <= limit <= capacity
+
+*  通过NIO读取文件涉及3个步骤： [NioTest4](/src/main/java/com/yzd/nio/NioTest4.java)
+
+   1. 从FileInputStream获取FileChannel对象
+   2. 创建Buffer
+   3. 将数据从Channel读取到Buffer
+   
+*  绝对方法与相对方法的含义：
+   1. 相对方法：limit值与position值会在操作时被考虑到
+   2. 绝对方法：完全忽略掉limit与position值   
+       
