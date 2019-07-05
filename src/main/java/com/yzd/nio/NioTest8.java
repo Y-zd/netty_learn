@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 /***
- * allocateDirect
+ * DirectByteBuffer
  * @author : yanzhidong
  * @date : 2019/7/1 
  * @version : V1.0

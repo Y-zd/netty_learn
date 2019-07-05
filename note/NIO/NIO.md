@@ -22,11 +22,13 @@
    2. 创建Buffer
    3. 将数据从Channel读取到Buffer
    
-*  绝对方法与相对方法的含义：
+*  绝对方法与相对方法的含义
    1. 相对方法：limit值与position值会在操作时被考虑到
    2. 绝对方法：完全忽略掉limit与position值   
        
-*  DirectByteBuffer(buffer数组在堆外直接内存) 和 HeapByteBuffer(buffer数组在堆内)
+*  DirectByteBuffer(buffer数组在堆外直接内存) [NioTest8](/src/main/java/com/yzd/nio/NioTest8.java) 和 HeapByteBuffer(buffer数组在堆内)
    1. DirectByteBuffer存放着指向堆外直接内存的的address
    2. HeapByteBuffer与操作系统交互数据的时候需要把数据拷贝到堆外直接内存
    3. DirectByteBuffer实现0拷贝
+
+*  MappedByteBuffer 内存映射文件
