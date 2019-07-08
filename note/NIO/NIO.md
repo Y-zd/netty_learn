@@ -31,4 +31,6 @@
    2. HeapByteBuffer与操作系统交互数据的时候需要把数据拷贝到堆外直接内存
    3. DirectByteBuffer实现0拷贝
 
-*  MappedByteBuffer 内存映射文件
+*  MappedByteBuffer 内存映射文件  [NioTest9](/src/main/java/com/yzd/nio/NioTest9.java)
+
+*  关于Buffer的 Scattering(发散) 与 Gathering(聚合) [NioTest10](/src/main/java/com/yzd/nio/NioTest9.java)

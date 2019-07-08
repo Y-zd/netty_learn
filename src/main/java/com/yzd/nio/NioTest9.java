@@ -1,6 +1,5 @@
 package com.yzd.nio;
 
-import java.io.FileInputStream;
 import java.io.RandomAccessFile;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
