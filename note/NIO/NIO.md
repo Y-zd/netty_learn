@@ -33,4 +33,8 @@
 
 *  MappedByteBuffer 内存映射文件  [NioTest9](/src/main/java/com/yzd/nio/NioTest9.java)
 
-*  关于Buffer的 Scattering(发散) 与 Gathering(聚合) [NioTest10](/src/main/java/com/yzd/nio/NioTest9.java)
+*  关于Buffer的 Scattering(发散) 与 Gathering(聚合) [NioTest10](/src/main/java/com/yzd/nio/NioTest10.java)
+
+*  Selector初步使用 [NioTest11](/src/main/java/com/yzd/nio/NioTest11.java)
+
+*  Nio实现小的聊天系统 [NioServer](/src/main/java/com/yzd/nio/NioServer.java) [NioClient](/src/main/java/com/yzd/nio/NioClient.java)
