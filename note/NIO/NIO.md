@@ -38,3 +38,22 @@
 *  Selector初步使用 [NioTest11](/src/main/java/com/yzd/nio/NioTest11.java)
 
 *  Nio实现小的聊天系统 [NioServer](/src/main/java/com/yzd/nio/NioServer.java) [NioClient](/src/main/java/com/yzd/nio/NioClient.java)
+
+
+### java的编解码 
+*  <https://blog.csdn.net/qq_42068856/article/details/83792174>
+
+*  <https://www.cnblogs.com/arxive/p/10072614.html> 
+  
+*  [NioTest11](/src/main/java/com/yzd/nio/NioTest11.java)
+```
+        Charset charset = Charset.forName("utf-8");
+        //解码器
+        CharsetDecoder charsetDecoder = charset.newDecoder();
+        //编码器
+        CharsetEncoder charsetEncoder = charset.newEncoder();
+        CharBuffer charBuffer = charsetDecoder.decode(inputData);
+        ByteBuffer outputData = charsetEncoder.encode(charBuffer);
+```
+
+*  unicode是一种编码方式，UTF则是一种存储方式
