@@ -57,3 +57,20 @@
 ```
 
 *  unicode是一种编码方式，UTF则是一种存储方式
+
+
+###  NIO零拷贝  
+
+*  非零拷贝数据读取过程 ![image](https://github.com/Y-zd/netty_learn/blob/master/note/NIO/image/非零拷贝.png)
+   1. read() syscall :用户空间模式切换到内核空间模式(上下文切换)
+   2. ask for data :向磁盘发送读取数据的请求
+   3. data to kernel buffer through DMA :DMA(直接内存访问)，通过DMA的方式将数据读取到内核空间的缓冲区
+   4. copy data to user buffer :将数据拷贝到用户空间缓冲区
+
+*  零拷贝数据读取过程，所有数据操作都在内核空间进行 ![image](https://github.com/Y-zd/netty_learn/blob/master/note/NIO/image/零拷贝.png)
+   1. sendfile() syscall 
+   2. ask for data 
+   3. data to kernel buffer through DMA 可省略此步  ![image](https://github.com/Y-zd/netty_learn/blob/master/note/NIO/image/零拷贝2.png)
+   4. 将数据写入socket 缓冲区 
+   
+   
