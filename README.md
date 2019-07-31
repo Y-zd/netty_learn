@@ -23,10 +23,20 @@ netty学习
    4. netty 读写检测机制 [package-info](/src/main/java/com/yzd/netty/fourthexample/package-info.java)
    5. netty WebSocket  [package-info](/src/main/java/com/yzd/netty/fifthexample/package-info.java)
 ```java
-        //连接的接收 EventLoopGroup bossGroup = new NioEventLoopGroup();
+        //连接的接收,连接的监听 EventLoopGroup bossGroup = new NioEventLoopGroup();
         //连接的处理 EventLoopGroup workerGroup = new NioEventLoopGroup();
-        //handler针对bossGroup
-        //childHandler针对workerGroup         
+        //ServerBootstrap serverBootstrap = new ServerBootstrap();
+        //参数的设置 serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+        //                        .handler(new LoggingHandler(LogLevel.WARN)) handler针对bossGroup(parentGroup)
+        //                        .childHandler(new MyServerInitializer());  /childHandler针对workerGroup 
+          
 ```
+
+
+## Reactor模式（反应器模式）
+*   netty整体架构是Reactor模式的完整体现
+*   大牛的文档<http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf>
+*   EventLoopGroup相当于Reactor
+
 
 
