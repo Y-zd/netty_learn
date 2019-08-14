@@ -64,7 +64,21 @@ netty学习
  6. Initiation Dispatcher会回调事件处理器的handle_event回调方法来执行特定于应用的功能（开发者自己所编写的功能）。从而响应这个事件。所发生的事件
     类型可以作为该方法参数并被该方法内部使用来执行额外的特定于服务的分离与分发。      
   
+ ### EventLoopGroup
+ 1. 一个EventLoopGroup当中包含一个或多个EventLoop
+ 2. 一个EventLoop在它的整个生命周期当中都只会与唯一一个Thread进行绑定
+ 3. 所有由EventLoop所处理的各种I/O事件都将在它所关联的那个Thread上进行处理
+ 4. 一个Chanel在它的整个生命周期中只会注册在一个EventLoop上
+ 5. 一个EventLoop在运行过程当中，会被分配给一个或者多个Channel
  
+ 重要结论： 再netty中，Channel的实现一定是线程安全的；基于此，我们可以存储一个Channel的引用，在需要向远端发送数据时通过引用调相应方法；即便是很多线程
+          在使用它也不会出现多线程问题，而且数据一定会发出出去（因为当若发送数据时不是当前Channel绑定的线程会以任务的形式提交到对应EventLoop的Thread）。
  
+ 重要结论： 我们在业务开发中，不要将长时间执行的耗时任务放入到evetLoop的执行队列中，因为它将会一直阻塞该线程所对应的所有Channel上的其他执行任务，如果我们
+          需要进行阻塞调用或者耗时操作，那我们要使用一个专门的EventExecutor(业务线程池)。 
 
-
+ 业务线程池通常会有两种实现方式： 
+        1. 在 ChannelHandler的回调方法中,使用自己定义的业务线程池,这样就可以实现异步调用。
+        2. 借助于Netty提供的向ChannelPipeline添加ChannelHandler时调用的addLast方法来传递EventExecutor。默认情况下(调用addLast(handler),
+           ChannelHandler中的回调方法都是由I/O线程所执行,如果调用了 ChannelPipeline addLast(EventExecutorGroup group, ChannelHandler... handlers);
+           方法,那么 ChannelHandler中的回调方法就是由参数中的group线程组来执行的。
