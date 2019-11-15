@@ -105,7 +105,7 @@ JDK所提供的Future只能通过手工方式检查执行结果，而这个操�
        //      0      <=      readerIndex   <=   writerIndex    <=    capacity
        
 ``` 
-netty ByteBuf提供的三种缓冲区类型
+netty ByteBuf提供的三种缓冲区类型（还有池化的和非池化的）
 1. heap ByteBuf: 在jvm堆上分配的，底层是数组
     这是常用的类型，将数据存到jvm的堆空间中，并将数据实际放到byte array中来实现。
     优点：由于数据在堆中，可以快速的创建与释放。并且提供了直接访问内部字节数组的方法。
@@ -132,6 +132,12 @@ JDK中ByteBuffer的缺点：
 Netty中ByteBuf的优点：
 1. 存数据的数组是动态的，容量最大值Integer.MAX_VALUE
 2. 读写索引是完全分离的。
+
+###(ByteBuf引用计数)ReferenceCounted中AtomicIntegerFieldUpdater要点总结：
+1. 更新器更新的必须是int类型变量
+2. 更新器更新的必须是volatile类型变量
+3. 变量不能是static的，必须要是实例变量。cas操作本质上是通过对象实例的偏移量来直接进行赋值的。
+4. 更新器只能改变它可见范围的变量，因为更新器是通过反射来得到变量的。
 
     
      

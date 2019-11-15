@@ -21,5 +21,11 @@ public class ByteBufTest0 {
         for (int i = 0; i < byteBuf.capacity(); i++) {
             System.out.println(byteBuf.getByte(i));
         }
+
+        System.out.println(byteBuf.retain());
+        System.out.println(byteBuf.release());
+
+        byteBuf.release();
+        byteBuf.release();
     }
 }
