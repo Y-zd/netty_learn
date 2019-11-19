@@ -144,11 +144,14 @@ Netty中ByteBuf的优点：
 ###Netty处理器(入站处理器，出站处理器)
 1. 入站顶层ChannelInboundHandler
 2. 出站顶层ChannelOutboundHandler
-3. 数据处理时常用的各种编解码器本质上都是处理器
+3. 数据处理时常用的各种编解码器本质上都是处理器[package-info](/src/main/java/com/yzd/netty/handler/package-info.java)
    编解码器: 无论向网络中写入什么类型的数据，在网络传递中都是以字节流的形式传递；
             将数据由原本形式转换成字节流叫编码(encode),反之叫解码(decode),统称为codec；
             编码本质上是出站处理器，解码反之；         
             在netty中编码器通常以XXXXEncoder命名，解码器以XXXXDecoder命名。
-                    
+   关于编解码器结论: 无论是编码器还是解码器，其所接收的消息类型必须要和待处理的参数类型一致，否则该编解码并不会被执行。
+                  在解码器进行数据解码的时候，一定要记得判断缓冲(ByteBuf)中数据是否足够。
+   TCP黏包拆包:[package-info](/src/main/java/com/yzd/netty/handler3/package-info.java)                              
+                                      
      
      

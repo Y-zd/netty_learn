@@ -1,4 +1,4 @@
-package com.yzd.netty.handler;
+package com.yzd.netty.handler2;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -11,13 +11,11 @@ import io.netty.channel.socket.SocketChannel;
  * @version : V1.0
  *
  */
-public class MyClientInitializer extends ChannelInitializer<SocketChannel> {
+public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
+        System.out.println(this);
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new MyByteToLongDecoder2());
-        pipeline.addLast(new MyLongToByteEncoder());
-        pipeline.addLast(new MyClientHandler());
-
+        pipeline.addLast(new MyServerHandler());
     }
 }

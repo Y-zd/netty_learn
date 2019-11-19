@@ -1,9 +1,11 @@
 package com.yzd.netty.handler;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
-import java.time.LocalDateTime;
+import java.nio.charset.Charset;
 
 /***
  *
@@ -15,17 +17,18 @@ import java.time.LocalDateTime;
 public class MyClientHandler extends SimpleChannelInboundHandler<Long> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Long msg) throws Exception {
-
         System.out.println(ctx.channel().remoteAddress());
         System.out.println("client output:" + msg);
-        ctx.channel().writeAndFlush("from client:" + LocalDateTime.now());
-
     }
 
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush("来自于客户端！");
+        ctx.writeAndFlush(123456L);
+        //发送不出去
+//        ctx.writeAndFlush(4);
+        //能发送出去
+//        ctx.writeAndFlush(Unpooled.copiedBuffer("helloworld", Charset.forName("utf-8")));
     }
 
     @Override

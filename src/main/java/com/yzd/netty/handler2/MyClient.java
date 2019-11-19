@@ -1,4 +1,4 @@
-package com.yzd.netty.handler;
+package com.yzd.netty.handler2;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
