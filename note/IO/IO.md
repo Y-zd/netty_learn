@@ -63,7 +63,7 @@ Java程序通过流来完成输人/输出。流是生产或消费信息的抽象
 
    ![image](https://github.com/Y-zd/netty_learn/blob/master/note/IO/image/OutputStream的类层次.png)
 
- 1. OutputStream是定义了流式字节输出模式的抽象类。
+ 1. OutputStream是定义了流式字节输出  模式的抽象类。
  2. 常用方法:
     * abstract void write(int b):往输出流中写入一个字节
     * void write(byte[] b):往输出流中写入数组b中的所有字节
